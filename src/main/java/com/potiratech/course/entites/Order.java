@@ -1,5 +1,7 @@
 package com.potiratech.course.entites;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -16,7 +18,9 @@ public class Order implements Serializable {
     @Column(name = "id", nullable = false)
     private Long Id;
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "GMT")
     private Instant moment;
+
 
     @ManyToOne
     @JoinColumn(name = "client_id")
