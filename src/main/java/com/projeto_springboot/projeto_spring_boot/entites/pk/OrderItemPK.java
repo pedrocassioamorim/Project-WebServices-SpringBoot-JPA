@@ -1,11 +1,12 @@
 package com.projeto_springboot.projeto_spring_boot.entites.pk;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.projeto_springboot.projeto_spring_boot.entites.Product;
 import com.projeto_springboot.projeto_spring_boot.entites.Order;
 
-import javax.persistence.Embeddable;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -32,6 +33,7 @@ public class OrderItemPK implements Serializable {
         this.order = order;
     }
 
+    @JsonIgnore
     public Product getProduct() {
         return product;
     }

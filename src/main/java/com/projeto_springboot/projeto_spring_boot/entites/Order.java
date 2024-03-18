@@ -1,8 +1,10 @@
 package com.projeto_springboot.projeto_spring_boot.entites;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.projeto_springboot.projeto_spring_boot.enums.OrderStatus;
-import javax.persistence.*;
+import jakarta.persistence.*;
+
 
 import java.io.Serializable;
 import java.time.Instant;
@@ -15,9 +17,9 @@ import java.util.Set;
 public class Order implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @javax.persistence.Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+    @Column(name = "Id", nullable = false)
     private Long Id;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "GMT")
@@ -30,6 +32,7 @@ public class Order implements Serializable {
     @JoinColumn(name = "client_id")
     private User client;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "Id.order")
     private Set<OrderItem> items = new HashSet<>();
 

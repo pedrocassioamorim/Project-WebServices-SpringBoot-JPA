@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping( "categories")
+@RequestMapping( "/categories")
 public class CategoryResource {
 
     @Autowired
@@ -25,7 +25,7 @@ public class CategoryResource {
 
     }
 
-    @GetMapping(value = "/{id}")
+    @GetMapping(value = "/{Id}")
     public ResponseEntity<Category> findById(@PathVariable Long Id){
         Category obj = service.findById(Id);
         return ResponseEntity.ok().body(obj);

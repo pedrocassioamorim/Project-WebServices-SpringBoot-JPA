@@ -1,18 +1,19 @@
 package com.projeto_springboot.projeto_spring_boot.entites;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
+
 @Entity
 @Table(name = "tb_product")
 public class Product implements Serializable {
     public static final long serialVersionUID = 1L;
 
-    @javax.persistence.Id
+    @jakarta.persistence.Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long Id;
@@ -28,6 +29,8 @@ public class Product implements Serializable {
     inverseJoinColumns = @JoinColumn(name = "category_Id"))
     private Set<Category> categories = new HashSet<>();
 
+    @OneToMany(mappedBy = "Id.product")
+    private Set<OrderItem> items = new HashSet<>();
 
 
     public Product(){}
@@ -106,5 +109,13 @@ public class Product implements Serializable {
                 ", imgUrl='" + imgUrl + '\'' +
                 ", categories=" + categories +
                 '}';
+    }
+
+    public Set<Order> getOrders() {
+        Set<Order> set = new HashSet<>();
+        for (OrderItem x : items){
+            set.add(x.getOrder());
+        }
+        return set;
     }
 }

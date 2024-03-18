@@ -1,7 +1,7 @@
 package com.projeto_springboot.projeto_spring_boot.entites;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.util.HashSet;
@@ -12,7 +12,7 @@ import java.util.Set;
 public class Category implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @javax.persistence.Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long Id;

@@ -3,7 +3,7 @@ package com.projeto_springboot.projeto_spring_boot.entites;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -18,7 +18,7 @@ public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long Id;
     private String name;
     private String email;
     private String phone;
@@ -32,7 +32,7 @@ public class User implements Serializable {
     public User(){}
 
     public User(Long id, String name, String email, String phone, String password) {
-        this.id = id;
+        this.Id = id;
         this.name = name;
         this.email = email;
         this.phone = phone;
@@ -41,11 +41,11 @@ public class User implements Serializable {
 
     // Getters and Setters:
     public Long getId() {
-        return id;
+        return Id;
     }
 
     public void setId(Long id) {
-        this.id = id;
+        this.Id = id;
     }
 
     public String getName() {
@@ -89,13 +89,12 @@ public class User implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof User user)) return false;
-        return Objects.equals(id, user.id);
+        return Objects.equals(Id, user.Id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return Objects.hash(Id);
     }
-
 
 }
