@@ -1,5 +1,6 @@
 package com.projeto_springboot.projeto_spring_boot.entites;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -111,6 +112,7 @@ public class Product implements Serializable {
                 '}';
     }
 
+    @JsonIgnore
     public Set<Order> getOrders() {
         Set<Order> set = new HashSet<>();
         for (OrderItem x : items){
